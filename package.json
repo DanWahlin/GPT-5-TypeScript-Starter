@@ -1,0 +1,22 @@
+{
+  "name": "gpt-5-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Demo using gpt-5",
+  "main": "index.js",
+  "scripts": {
+    "keyless": "node aiprojects.js",
+    "key": "node azureopenai.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "openai":"^5.12.2",
+    "@azure/ai-projects": "1.0.0",
+    "@azure/identity": "^4.11.1",
+    "dotenv": "^17.2.1"
+  }
+}
+
