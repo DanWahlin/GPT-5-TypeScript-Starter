@@ -29,6 +29,7 @@ out
 .tmp
 .temp
 .cache
+.claude
 
 # Dependency directories
 node_modules/

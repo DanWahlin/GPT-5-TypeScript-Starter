@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "description": "Demo using gpt-5",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "keyless": "node aiprojects.js",
-    "key": "node azureopenai.js"
+    "build": "tsc",
+    "keyless": "tsx aiprojects.ts",
+    "key": "tsx azureopenai.ts"
   },
   "engines": {
     "node": ">=20"
@@ -17,6 +18,11 @@
     "@azure/ai-projects": "1.0.0",
     "@azure/identity": "^4.11.1",
     "dotenv": "^17.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0"
   }
 }
 
