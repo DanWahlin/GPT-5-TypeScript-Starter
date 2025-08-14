@@ -7,8 +7,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "keyless": "tsx aiprojects.ts",
-    "key": "tsx azureopenai.ts"
+    "keyless": "tsx src/aiprojects.ts",
+    "key": "tsx src/azureopenai.ts"
   },
   "engines": {
     "node": ">=20"
