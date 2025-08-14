@@ -10,6 +10,9 @@ interface MathExplanationSchema {
 
 const endpoint = process.env.AZURE_INFERENCE_ENDPOINT!; 
 const deployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-5';
+
+// NOTE: AIProjectClient can handle completions, work with agents, and more.
+// Get more details at https://www.npmjs.com/package/@azure/ai-projects
 const project = new AIProjectClient(endpoint, new DefaultAzureCredential());
 
 const client = await project.getAzureOpenAIClient({
