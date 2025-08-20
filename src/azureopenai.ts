@@ -13,6 +13,11 @@ const key = process.env.AZURE_INFERENCE_KEY!;
 const deployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-5';
 let client: OpenAI | AzureOpenAI;
 
+/*
+  While this uses OpenAI/AzureOpenAI, there's also an inference option available as well. 
+  See https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/ai/ai-inference-rest/samples/v1-beta/typescript/src/chatCompletions.ts 
+  for more details.
+*/
 client = endpoint.includes('models.github.ai')
     ? new OpenAI({ baseURL: endpoint, apiKey: key })
     : new AzureOpenAI({ endpoint, apiKey: key, apiVersion: '2025-01-01-preview', deployment });
