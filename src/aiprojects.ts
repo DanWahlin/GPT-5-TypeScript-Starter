@@ -1,7 +1,7 @@
 import { DefaultAzureCredential } from '@azure/identity';
 import { AIProjectClient } from '@azure/ai-projects';
 import { config } from 'dotenv';
-config();
+config({ quiet: true });
 
 interface MathExplanationSchema {
   steps: string[];

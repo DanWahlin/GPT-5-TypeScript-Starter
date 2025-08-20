@@ -1,6 +1,6 @@
 import { OpenAI, AzureOpenAI } from 'openai';
 import { config } from 'dotenv';
-config();
+config({ quiet: true });
 
 interface MathExplanationSchema {
   steps: string[];
@@ -18,7 +18,7 @@ let client: OpenAI | AzureOpenAI;
   See https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/ai/ai-inference-rest/samples/v1-beta/typescript/src/chatCompletions.ts 
   for more details.
 */
-client = endpoint.includes('models.github.ai')
+client = endpoint.includes('github')
     ? new OpenAI({ baseURL: endpoint, apiKey: key })
     : new AzureOpenAI({ endpoint, apiKey: key, apiVersion: '2025-01-01-preview', deployment });
 
