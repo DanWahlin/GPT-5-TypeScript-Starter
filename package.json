@@ -7,16 +7,20 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "keyless": "tsx src/aiprojects.ts",
-    "key": "tsx src/azureopenai.ts"
+    "keyless": "tsx src/ai-projects.ts",
+    "key": "tsx src/openai.ts",
+    "inference": "tsx src/ai-inference.ts"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "openai":"^5.12.2",
-    "@azure/ai-projects": "1.0.0",
-    "@azure/identity": "^4.11.1",
+    "openai":"latest",
+    "@azure/ai-projects": "latest",
+    "@azure/identity": "latest",
+    "@azure-rest/ai-inference": "latest",
+    "@azure/core-auth": "latest",
+    "@azure/core-sse": "latest",
     "dotenv": "^17.2.1"
   },
   "devDependencies": {

@@ -14,9 +14,9 @@ Project layout
 
 Environment and auth
 - Required vars (populate .env from .env.template):
-  - AZURE_INFERENCE_ENDPOINT: e.g., https://<resource>.cognitiveservices.azure.com
-  - AZURE_INFERENCE_KEY: Azure OpenAI API key (only used by azureopenai.js)
-  - AZURE_OPENAI_DEPLOYMENT: model deployment name (default "gpt-5")
+  - AI_ENDPOINT: e.g., https://<resource>.cognitiveservices.azure.com
+  - AI_KEY: Azure OpenAI API key (only used by azureopenai.js)
+  - AI_MODEL: model deployment name (default "gpt-5")
 - For index.js (DefaultAzureCredential) you can login via VS Code Azure sign-in or `az login`, or set AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET.
 
 Run workflows

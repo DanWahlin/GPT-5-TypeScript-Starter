@@ -28,9 +28,9 @@ This compiles the TypeScript files to JavaScript in the `dist/` folder.
 ## Configure environment
 Rename `.env.template` to `.env` and fill in values as appropriate:
 
-- `AZURE_INFERENCE_ENDPOINT` (e.g., https://<your-resource>.cognitiveservices.azure.com)
-- `AZURE_INFERENCE_KEY` (API key; only needed for `azureopenai.js`)
-- `AZURE_OPENAI_DEPLOYMENT` (optional; defaults to `gpt-5` in code)
+- `AI_ENDPOINT` (e.g., https://<your-resource>.cognitiveservices.azure.com)
+- `AI_KEY` (API key; only needed for `azureopenai.js`)
+- `AI_MODEL` (optional; defaults to `gpt-5` in code)
 
 ## Run
 
@@ -85,8 +85,8 @@ Answer: 161
 
 ## Troubleshooting
 - 401/403 (AAD): Ensure you’re signed in (`az login`) and have RBAC on the AI Foundry project GPT-5 endpoint connection (e.g., Cognitive Services OpenAI User).
-- 401 (API key): Ensure `AZURE_INFERENCE_KEY` is set and valid for the endpoint in `AZURE_INFERENCE_ENDPOINT`.
-- 404/BadRequest: Verify `AZURE_OPENAI_DEPLOYMENT` matches an existing deployment name in your resource.
+- 401 (API key): Ensure `AI_KEY` is set and valid for the endpoint in `AI_ENDPOINT`.
+- 404/BadRequest: Verify `AI_MODEL` matches an existing deployment name in your resource.
 - API version mismatch: Keep `2025-01-01-preview` consistent across files.
 - ESM errors: Node 20+ is required; the project uses ESM imports (`type: module`).
 

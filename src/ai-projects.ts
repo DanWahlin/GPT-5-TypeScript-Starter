@@ -1,4 +1,5 @@
-import { OpenAI, AzureOpenAI } from 'openai';
+import { DefaultAzureCredential } from '@azure/identity';
+import { AIProjectClient } from '@azure/ai-projects';
 import { config } from 'dotenv';
 config({ quiet: true });
 
@@ -7,20 +8,17 @@ interface MathExplanationSchema {
   answer: number;
 }
 
-// Can use either GitHub Models or Azure AI Foundry endpoint/key
-const endpoint = process.env.AZURE_INFERENCE_ENDPOINT!; 
-const key = process.env.AZURE_INFERENCE_KEY!;
-const deployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-5';
-let client: OpenAI | AzureOpenAI;
+const endpoint = process.env.AI_ENDPOINT!; 
+const deployment = process.env.AI_MODEL || 'gpt-5';
 
-/*
-  While this uses OpenAI/AzureOpenAI, there's also an inference option available as well. 
-  See https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/ai/ai-inference-rest/samples/v1-beta/typescript/src/chatCompletions.ts 
-  for more details.
-*/
-client = endpoint.includes('github')
-    ? new OpenAI({ baseURL: endpoint, apiKey: key })
-    : new AzureOpenAI({ endpoint, apiKey: key, apiVersion: '2025-01-01-preview', deployment });
+// NOTE: AIProjectClient can handle completions, work with agents, and more.
+// Get more details at https://www.npmjs.com/package/@azure/ai-projects
+const project = new AIProjectClient(endpoint, new DefaultAzureCredential());
+
+const client = await project.getAzureOpenAIClient({
+    // The API version should match the version of the Azure OpenAI resource
+    apiVersion: '2025-01-01-preview'
+});
 
 const schema = { 
     name: 'math_explanation', 
@@ -55,9 +53,10 @@ console.log('Answer:', data.answer);
 OUTPUT
 
 Steps: [
-  'Break 23 into 20 + 3',
+  'Break 23 into 20 and 3: (20 + 3) * 7',
   'Multiply: 20 * 7 = 140',
   'Multiply: 3 * 7 = 21',
-  'Add the products: 140 + 21 = 161'
+  'Add the results: 140 + 21 = 161'
 ]
+Answer: 161
 */
