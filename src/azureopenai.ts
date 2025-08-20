@@ -1,4 +1,4 @@
-import { AzureOpenAI } from 'openai';
+import { OpenAI, AzureOpenAI } from 'openai';
 import { config } from 'dotenv';
 config();
 
@@ -7,11 +7,15 @@ interface MathExplanationSchema {
   answer: number;
 }
 
+// Can use either GitHub Models or Azure AI Foundry endpoint/key
 const endpoint = process.env.AZURE_INFERENCE_ENDPOINT!; 
 const key = process.env.AZURE_INFERENCE_KEY!;
 const deployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-5';
+let client: OpenAI | AzureOpenAI;
 
-const client = new AzureOpenAI({ endpoint, apiKey: key, apiVersion: '2025-01-01-preview', deployment });
+client = endpoint.includes('models.github.ai')
+    ? new OpenAI({ baseURL: endpoint, apiKey: key })
+    : new AzureOpenAI({ endpoint, apiKey: key, apiVersion: '2025-01-01-preview', deployment });
 
 const schema = { 
     name: 'math_explanation', 
